@@ -1,0 +1,191 @@
+﻿using AssignFive.Manager;
+using AssignFive.TheGarage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AssignFive.TheVehicles;
+using System.Collections.Generic;
+using AssignFive.ConsoleUI;
+using AssignFive.InterfaceFolder;
+using System.Drawing;
+using System.Text.RegularExpressions;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+
+namespace AssignFive.TheGarage
+{
+    public class GarageHandler
+    {
+        public static int[] CountVehicles(Garage<Vehicle> theLeGarage)
+        {
+
+            int[] result = new int[5];
+
+            foreach (var item in theLeGarage)
+            {
+                if (item is IAirplane)
+                {
+                    result[0] += 1;
+                }
+                if (item is IBoat)
+                {
+                    result[1] += 1;
+                }
+                if (item is IBus)
+                {
+                    result[2] += 1;
+                }
+                if (item is IMotorcycle)
+                {
+                    result[3] += 1;
+                }
+                if (item is ICar)
+                {
+                    result[4] += 1;
+                }
+            }
+
+            return result;
+        }
+
+        public static void AddVehicle(char input)
+        {
+            string regnr, color, numberInput, engines;
+
+            if (input == '1')
+            {
+                dynamic[] vehicleArray = SameVehicleInputs();
+                
+                Console.Write("Antal Motorer: ");
+                engines = Console.ReadLine()!;
+                int enginesResult = CheckInt(engines);
+
+                Airplane air = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], enginesResult);
+                Garage<Vehicle>.laraSoft.Park(air);
+                Console.WriteLine("\n *** Ett Flygplan har parkerat! ***");
+            }
+
+            if (input == '2')
+            {
+                dynamic[] vehicleArray = SameVehicleInputs();
+
+                Console.Write("Hur många Fot: ");
+                string feet = Console.ReadLine()!;
+                int feetResult = CheckInt(feet);
+                
+                Boat boat = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], feetResult);
+                Garage<Vehicle>.laraSoft.Park(boat);
+                Console.WriteLine("\n *** En Båt har parkerat! ***");
+            }
+
+            if (input == '3')
+            {
+                dynamic[] vehicleArray = SameVehicleInputs();
+
+                Console.Write("Diesel eller Bensin: ");
+                string fuel = Console.ReadLine()!;
+                string engineFuel = CheckString(fuel);
+
+                Bus bus = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], engineFuel);
+                Garage<Vehicle>.laraSoft.Park(bus);
+                Console.WriteLine("\n *** En Buss har parkerat! ***");
+            }
+
+            if (input == '4')
+            {
+                dynamic[] vehicleArray = SameVehicleInputs();
+
+                Console.Write("Hur många CC: ");
+                string cyl = Console.ReadLine()!;
+                int cylVolume = CheckInt(cyl);
+
+                Motorcycle motorCycle = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], cylVolume);
+                Garage<Vehicle>.laraSoft.Park(motorCycle);
+                Console.WriteLine("\n *** En Motorcykel har parkerat! ***");
+            }
+
+            if (input == '5')
+            {
+                dynamic[] vehicleArray = SameVehicleInputs();
+
+                Console.Write("Hur många Säten: ");
+                string seats = Console.ReadLine()!;
+                int numberOfSeats = CheckInt(seats);
+
+                Car car = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], numberOfSeats);
+                Garage<Vehicle>.laraSoft.Park(car);
+                Console.WriteLine("\n *** En Bil har parkerat! ***");
+            }
+            else
+            {
+                Console.WriteLine("\nInget objekt skapades");
+            }
+      
+        }
+
+        public static void RemoveVehicle(Garage<Vehicle> laraSoft)
+        {
+            string value = RegNumberInput();
+            Garage<Vehicle>.laraSoft.Unpark(value);
+            Console.WriteLine($"\n *** Fordon: {value} har lämnat Garaget! ***\n");
+        }
+
+       
+
+        public static int CheckInt(string input)
+        {
+            int resultInt;
+            while (!int.TryParse(input, out resultInt))
+            {
+                Console.WriteLine("Har du skrivit in en siffra?\n");
+                Console.Write("Prova med en siffra: ");
+                input = Console.ReadLine()!;
+            }
+          
+            return resultInt;
+        }
+
+        public static string CheckString(string input)
+        {
+            while (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Har du skrivit in något?\n");
+                Console.Write("Prova igen: ");
+                input = Console.ReadLine()!;
+            }
+            string resultString = input;
+            return resultString;
+        }
+
+        public static dynamic[] SameVehicleInputs()
+        {
+            string regnr, color, numberInput;
+
+            Console.Write("Vilket Regnr: ");
+            regnr = Console.ReadLine()!;
+            regnr = CheckString(regnr);
+            regnr.ToUpper();
+
+            Console.Write("Hur många Hjul: ");
+            numberInput = Console.ReadLine()!;
+            int intToStringResult = CheckInt(numberInput);
+          
+            Console.Write("Vilken Färg: ");
+            color = Console.ReadLine()!;
+            color = CheckString(color);
+
+            return new dynamic[] { regnr, intToStringResult, color };
+        }
+
+        public static string RegNumberInput()
+        {
+            string regnr;
+            Console.Write("Vilket Regnummer: ");
+            regnr = Console.ReadLine()!;
+            regnr = CheckString(regnr);
+            return regnr.ToUpper();
+        }
+    }
+}
