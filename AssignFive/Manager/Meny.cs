@@ -1,4 +1,5 @@
-﻿using AssignFive.TheGarage;
+﻿using AssignFive.ConsoleUI;
+using AssignFive.TheGarage;
 using AssignFive.TheVehicles;
 using System;
 
@@ -8,15 +9,20 @@ namespace AssignFive.Manager
     {
         public static string MenyText()
         {
+            UI.GarageInfo();
+            
             string meny =
+
              "---------------------------\n"
            + "  Välkommen till Garaget   \n"
            + "---------------------------\n"
            + "1: Garageöversikt\n"
-           + "2: Lista fordon\n"
+           + "2: Lista på fordon\n"
            + "3: Lägg till eller ta bort fordon\n"
-           + "4: Hämta eller spara ned Garage\n"
-           + "5: Sök fordon\n"
+           + "4: Populera Garaget (6 st)\n"
+           + "5: Initiera valfri Garagestorlek\n"
+           + "6: Hämta eller spara ned Garage\n"
+           + "7: Sök fordon\n" 
            + "0: Avsluta\n";
             
             while (true)
@@ -41,15 +47,15 @@ namespace AssignFive.Manager
                         break;
                     case '2':
                         MenyHandler.ListVehicles();
-                        continue;
+                        break;
                     case '3':
                         MenyHandler.AlterGarage();
-                        continue;
+                        break;
                     case '4':
-                        //InstanciateNewGarage();
-                        continue;
+                        BulkGarage.TestGarage(Garage<Vehicle>.laraSoft);
+                        break;
                     case '5':
-                        //RecursiveEven(10);
+                        GarageHandler.InitOwnGarageSize();
                         continue;
                     case '6':
                         //IterativeEven(10);

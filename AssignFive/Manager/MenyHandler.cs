@@ -17,12 +17,13 @@ namespace AssignFive.Manager
         
         public static void CheckGarage()
         {
+            UI.GarageInfo();
             string meny =
                   "---------------------------\n"
                 + "     Garageöversikten      \n"
                 + "---------------------------\n"
                 + "1: Kolla in Garaget\n"
-                + "0: Avsluta\n";
+                + "0: Tillbaka\n";
 
             while (true)
             { 
@@ -49,20 +50,20 @@ namespace AssignFive.Manager
                     default:
                         Console.WriteLine("\n   *** Ni behöver skriva in ett nummer från Menyn! ***\n");
                         break;
-                }
             }
-    
         }
+    }
 
 
         public static void ListVehicles()
         {
+            UI.GarageInfo();
             string meny =
                   "---------------------------\n"
                 + "       Fordonslistan       \n"
                 + "---------------------------\n"
                 + "1: Räkna fordonen\n"
-                + "0: Avsluta\n";
+                + "0: Tillbaka\n";
 
             while (true)
             {
@@ -95,13 +96,14 @@ namespace AssignFive.Manager
         }
         public static void AlterGarage()
         {
+            UI.GarageInfo();
             string meny =
                   "---------------------------\n"
                 + "      Garageändringar      \n"
                 + "---------------------------\n"
                 + "1: Lägg till Fordon\n"
                 + "2: Ta bort Fordon\n"
-                + "0: Avsluta\n";
+                + "0: Tillbaka\n";
 
             while (true)
             {
@@ -131,15 +133,13 @@ namespace AssignFive.Manager
                     default:
                         Console.WriteLine("\n   *** Ni behöver skriva in ett nummer från Menyn! ***\n");
                         break;
-                }
-
-               
+                }            
             }
-
         }
+
         public static void GettingVehicleInputs()
         {
-            //var leGarage = BulkGarage.TestGarage();
+            UI.GarageInfo();
             string meny =
                  "---------------------------\n"
                + "      Välj fordonstyp      \n"
@@ -174,6 +174,9 @@ namespace AssignFive.Manager
                     case '5':
                         GarageHandler.AddVehicle(nextinput);
                         break;
+                  /*  case '6':
+                        CheckGarage();*/
+                        break;
                     case '0':
                         AlterGarage();
                         break;
@@ -181,20 +184,18 @@ namespace AssignFive.Manager
                         Console.WriteLine("\n   *** Ni behöver skriva in ett nummer från Menyn! ***\n");
                         break;
                 }
-
-
-            }
-        
+            }        
         }
+
         public static void GettingRegNumberInputs()
         {
-            //var leGarage = BulkGarage.TestGarage();
+            UI.GarageInfo(); 
             string meny =
                  "---------------------------\n"
                + "      Ta bort Fordon       \n"
                + "---------------------------\n"
                + "1: Skriv in RegNumret\n"
-               + "0: Avsluta\n";
+               + "0: Tillbaka\n";
 
             while (true)
             {

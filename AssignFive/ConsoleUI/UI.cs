@@ -15,9 +15,9 @@ namespace AssignFive.ConsoleUI
 
         public static void ListAllGarage(Garage<Vehicle> laraSoft)
         {
-            string header = String.Format("{0,-12}{1,7}{2,12}{3,12}\n", "VEHICLE", "REGNUM", "WHEELS", "EXTRA");
+            //string header = String.Format("{0,-12}{1,7}{2,12}{3,12}\n", "VEHICLE", "REGNUM", "WHEELS", "EXTRA");
 
-            Console.WriteLine(header);
+            Console.WriteLine("\nGARAGELIST:\n");
            
             // string[] interfaces = { "IAirplane", "IBoat", "IBus", "IMotorcycle", "ICar" }; 
 
@@ -57,6 +57,22 @@ namespace AssignFive.ConsoleUI
                             + $"\nBUSES:\t\t {sumVehicles[2]}"
                             + $"\nMOTORCYCLES:\t {sumVehicles[3]}"
                             + $"\nCARS:\t\t {sumVehicles[4]}");
+        }
+        public static void GreenText(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{message}");
+            Console.ResetColor();
+        }
+        public static void BlueText(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"{message}");
+            Console.ResetColor();
+        }
+        public static void GarageInfo()
+        {
+            BlueText($"\nAntal Fordon i Garaget är {Garage<Vehicle>.laraSoft.Count()}\n");
         }
     }
 }

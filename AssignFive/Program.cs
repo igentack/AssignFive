@@ -42,7 +42,12 @@ namespace AssignFive
 
             }
             Console.WriteLine(theLeGarage);*/
-            BulkGarage.TestGarage(Garage<Vehicle>.laraSoft);
+
+            // BulkGarage.TestGarage(Garage<Vehicle>.laraSoft);
+            //Garage<Vehicle> theGarage = Garage<Vehicle>.OwnArr(4);
+            //Console.WriteLine(theGarage.ToString());
+            //Console.BackgroundColor = ConsoleColor.DarkGray;
+            //Console.Clear();
             Meny.MenyText();
         }
     }

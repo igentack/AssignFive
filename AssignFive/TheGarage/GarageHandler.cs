@@ -50,6 +50,7 @@ namespace AssignFive.TheGarage
             return result;
         }
 
+
         public static void AddVehicle(char input)
         {
             string regnr, color, numberInput, engines;
@@ -64,7 +65,8 @@ namespace AssignFive.TheGarage
 
                 Airplane air = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], enginesResult);
                 Garage<Vehicle>.laraSoft.Park(air);
-                Console.WriteLine("\n *** Ett Flygplan har parkerat! ***");
+                UI.GreenText("\n *** Ett Flygplan har parkerat! ***\n");
+                return;
             }
 
             if (input == '2')
@@ -77,7 +79,8 @@ namespace AssignFive.TheGarage
                 
                 Boat boat = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], feetResult);
                 Garage<Vehicle>.laraSoft.Park(boat);
-                Console.WriteLine("\n *** En Båt har parkerat! ***");
+                UI.GreenText("\n *** En Båt har parkerat! ***\n");
+                return;
             }
 
             if (input == '3')
@@ -90,7 +93,8 @@ namespace AssignFive.TheGarage
 
                 Bus bus = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], engineFuel);
                 Garage<Vehicle>.laraSoft.Park(bus);
-                Console.WriteLine("\n *** En Buss har parkerat! ***");
+                UI.GreenText("\n *** En Buss har parkerat! ***\n");
+                return;
             }
 
             if (input == '4')
@@ -103,7 +107,8 @@ namespace AssignFive.TheGarage
 
                 Motorcycle motorCycle = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], cylVolume);
                 Garage<Vehicle>.laraSoft.Park(motorCycle);
-                Console.WriteLine("\n *** En Motorcykel har parkerat! ***");
+                UI.GreenText("\n *** En Motorcykel har parkerat! ***\n");
+                return;
             }
 
             if (input == '5')
@@ -116,7 +121,8 @@ namespace AssignFive.TheGarage
 
                 Car car = new(vehicleArray[0], vehicleArray[1], vehicleArray[2], numberOfSeats);
                 Garage<Vehicle>.laraSoft.Park(car);
-                Console.WriteLine("\n *** En Bil har parkerat! ***");
+                UI.GreenText("\n *** En Bil har parkerat! ***\n");
+                return;
             }
             else
             {
@@ -125,7 +131,7 @@ namespace AssignFive.TheGarage
       
         }
 
-        public static void RemoveVehicle(Garage<Vehicle> laraSoft)
+        public static void RemoveVehicle(Garage<Vehicle>laraSoft)
         {
             string value = RegNumberInput();
             Garage<Vehicle>.laraSoft.Unpark(value);
@@ -163,7 +169,7 @@ namespace AssignFive.TheGarage
         {
             string regnr, color, numberInput;
 
-            Console.Write("Vilket Regnr: ");
+            Console.Write("\nVilket Regnr: ");
             regnr = Console.ReadLine()!;
             regnr = CheckString(regnr);
             regnr.ToUpper();
@@ -181,11 +187,22 @@ namespace AssignFive.TheGarage
 
         public static string RegNumberInput()
         {
-            string regnr;
             Console.Write("Vilket Regnummer: ");
-            regnr = Console.ReadLine()!;
+            string regnr = Console.ReadLine()!;
             regnr = CheckString(regnr);
+           
             return regnr.ToUpper();
         }
+
+        public static Garage<Vehicle> InitOwnGarageSize()
+        {
+            Console.Write("\nHur många Fordon ska få plats: ");
+            string arraySize = Console.ReadLine()!;
+            int numberOfIndexes = CheckInt(arraySize);
+            Garage<Vehicle> theGarage = Garage<Vehicle>.OwnArr(numberOfIndexes);
+            Console.WriteLine($"\n *** Ett Garage med {numberOfIndexes} platser skapades! ***\n");   
+            return theGarage;
+        }
+       
     }
 }

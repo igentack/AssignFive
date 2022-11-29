@@ -7,21 +7,28 @@ namespace AssignFive.TheGarage
     public class Garage<T> : IEnumerable<T>  where T: Vehicle
     {
 
-        private static T[] vehicles ;  //{ get; set; }
+        private static T[]? vehicles; 
+       
 
         public Garage(int capacity)
         {   
             vehicles = new T[capacity];
         }
 
-        private static Garage<Vehicle> theGarage = new Garage<Vehicle>(10);
-        
+        public static Garage<Vehicle> theGarage = new Garage<Vehicle>(8);
+
+        public static Garage<Vehicle> OwnArr(int index)
+        {
+            Garage<Vehicle>theGarage = new Garage<Vehicle>(index); 
+            return theGarage;
+        }
+
         public static Garage<Vehicle> laraSoft
         {
             get { return theGarage; }
 
         }
-        public T this[int index] => vehicles[index];
+        //public T this[int index] => vehicles[index];
 
    /*     public static Garage<Vehicle> GetInstance()
         {
@@ -50,7 +57,7 @@ namespace AssignFive.TheGarage
         {
             for (int i = 0; i < vehicles.Length; i++)
             {
-                if (vehicles[i] != null && vehicles[i].RegNumber == licenseNr)
+                if (vehicles[i] != null && vehicles[i].RegNumber.ToUpper() == licenseNr)
                 {
                     vehicles[i] = null;
                     return true;
@@ -71,11 +78,6 @@ namespace AssignFive.TheGarage
                 Garage<Vehicle> leGarage = new Garage<Vehicle>(arrayLenght);             
             }
         }*/
-
-        
-        public static void InitNewArray()
-       
-
 
         public IEnumerator<T> GetEnumerator()
         {
