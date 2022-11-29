@@ -9,7 +9,6 @@ namespace AssignFive.Manager
     {
         public static string MenyText()
         {
-            UI.GarageInfo();
             
             string meny =
 
@@ -27,6 +26,7 @@ namespace AssignFive.Manager
             
             while (true)
             {
+                UI.GarageInfo();
                 Console.WriteLine(meny);
 
                 char input = ' '; //Creates the character input to be used with the switch-case below.
@@ -56,9 +56,9 @@ namespace AssignFive.Manager
                         break;
                     case '5':
                         GarageHandler.InitOwnGarageSize();
-                        continue;
+                        break;
                     case '6':
-                        //IterativeEven(10);
+                        MenyHandler.WriteReadGarage();
                         continue;
                     case '7':
                         //IterativeFibonacci(10);

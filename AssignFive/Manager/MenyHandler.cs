@@ -1,5 +1,6 @@
 ﻿using AssignFive.ConsoleUI;
 using AssignFive.InterfaceFolder;
+using AssignFive.ReadWriteFiles;
 using AssignFive.TheGarage;
 using AssignFive.TheVehicles;
 using System;
@@ -17,7 +18,6 @@ namespace AssignFive.Manager
         
         public static void CheckGarage()
         {
-            UI.GarageInfo();
             string meny =
                   "---------------------------\n"
                 + "     Garageöversikten      \n"
@@ -57,7 +57,6 @@ namespace AssignFive.Manager
 
         public static void ListVehicles()
         {
-            UI.GarageInfo();
             string meny =
                   "---------------------------\n"
                 + "       Fordonslistan       \n"
@@ -96,7 +95,6 @@ namespace AssignFive.Manager
         }
         public static void AlterGarage()
         {
-            UI.GarageInfo();
             string meny =
                   "---------------------------\n"
                 + "      Garageändringar      \n"
@@ -139,7 +137,7 @@ namespace AssignFive.Manager
 
         public static void GettingVehicleInputs()
         {
-            UI.GarageInfo();
+            //var leGarage = BulkGarage.TestGarage();
             string meny =
                  "---------------------------\n"
                + "      Välj fordonstyp      \n"
@@ -189,7 +187,7 @@ namespace AssignFive.Manager
 
         public static void GettingRegNumberInputs()
         {
-            UI.GarageInfo(); 
+            //var leGarage = BulkGarage.TestGarage();
             string meny =
                  "---------------------------\n"
                + "      Ta bort Fordon       \n"
@@ -225,6 +223,48 @@ namespace AssignFive.Manager
                 }
 
 
+            }
+        }
+        public static void WriteReadGarage()
+        {
+            string meny =
+                  "---------------------------\n"
+                + "        Ladda Fordon       \n"
+                + "---------------------------\n"
+                + "1: Spara Fordon på fil\n"
+                + "2: Hämta Fordon från fil\n"
+                + "0: Tillbaka\n";
+
+            while (true)
+            {
+                Console.WriteLine(meny);
+
+                char input = ' ';
+                try
+                {
+                    Console.Write("Skriv ert val: ");
+                    input = Console.ReadLine()![0];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.Clear();
+                }
+                switch (input)
+                {
+                    case '1':
+                        IOFiles.CheckExistingVehicleFile();
+                        IOFiles.Write.SaveVehicles();
+                        break;
+                    case '2':
+                        GettingRegNumberInputs();
+                        break;
+                    case '0':
+                        Meny.MenyText();
+                        break;
+                    default:
+                        Console.WriteLine("\n   *** Ni behöver skriva in ett nummer från Menyn! ***\n");
+                        break;
+                }
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using AssignFive.TheVehicles;
+using AssignFive.ConsoleUI;
 using System.Collections;
 using System.Collections.ObjectModel;
 
@@ -23,7 +24,7 @@ namespace AssignFive.TheGarage
             theGarage.Park(car1);
             theGarage.Park(air10);
             theGarage.Park(bus1);
-            Console.WriteLine("\n   *** Garaget populerades med 6 gäster! ***\n");
+            UI.GreenText("\n   *** Garaget populerades med 6 gäster! ***");
             return Garage<Vehicle>.laraSoft;
         }
     }

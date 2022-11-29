@@ -200,7 +200,7 @@ namespace AssignFive.TheGarage
             string arraySize = Console.ReadLine()!;
             int numberOfIndexes = CheckInt(arraySize);
             Garage<Vehicle> theGarage = Garage<Vehicle>.OwnArr(numberOfIndexes);
-            Console.WriteLine($"\n *** Ett Garage med {numberOfIndexes} platser skapades! ***\n");   
+            UI.GreenText($"\n *** Ett Garage med {numberOfIndexes} platser skapades! ***\n");   
             return theGarage;
         }
        
