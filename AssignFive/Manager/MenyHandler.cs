@@ -172,9 +172,6 @@ namespace AssignFive.Manager
                     case '5':
                         GarageHandler.AddVehicle(nextinput);
                         break;
-                  /*  case '6':
-                        CheckGarage();*/
-                        break;
                     case '0':
                         AlterGarage();
                         break;
@@ -229,10 +226,9 @@ namespace AssignFive.Manager
         {
             string meny =
                   "---------------------------\n"
-                + "        Ladda Fordon       \n"
+                + "        Spara Fordon       \n"
                 + "---------------------------\n"
                 + "1: Spara Fordon på fil\n"
-                + "2: Hämta Fordon från fil\n"
                 + "0: Tillbaka\n";
 
             while (true)
@@ -253,7 +249,7 @@ namespace AssignFive.Manager
                 {
                     case '1':
                         IOFiles.CheckExistingVehicleFile();
-                        IOFiles.Write.SaveVehicles();
+                        IOFiles.SaveVehicles();
                         break;
                     case '2':
                         GettingRegNumberInputs();
@@ -267,6 +263,42 @@ namespace AssignFive.Manager
                 }
             }
         }
+        public static void Search()
+        {
+            string meny =
+                  "---------------------------\n"
+                + "        Sök Fordon       \n"
+                + "---------------------------\n"
+                + "1: Skriv in sökkriterier\n"
+                + "0: Tillbaka\n";
 
+            while (true)
+            {
+                Console.WriteLine(meny);
+
+                char input = ' ';
+                try
+                {
+                    Console.Write("Skriv in ert val: ");
+                    input = Console.ReadLine()![0];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.Clear();
+                }
+                switch (input)
+                {
+                    case '1':
+                        GarageHandler.SearchVehicleArray();
+                        break;
+                    case '0':
+                        Meny.MenyText();
+                        break;
+                    default:
+                        Console.WriteLine("\n   *** Ni behöver skriva in ett nummer från Menyn! ***\n");
+                        break;
+                }
+            }
+        }
     }   
 }

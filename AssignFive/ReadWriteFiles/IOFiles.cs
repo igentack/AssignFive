@@ -28,22 +28,21 @@ namespace AssignFive.ReadWriteFiles
                 }
             }
         }
-        internal class Write
+   
+        internal static void SaveVehicles()
         {
-            internal static void SaveVehicles()
+            string path = $"{relativeDir}{vehicleFile}";
+            StringBuilder vehicleString = new StringBuilder();
+            foreach (var vehicle in Garage<Vehicle>.theGarage)
             {
-                string path = $"{relativeDir}{vehicleFile}";
-                StringBuilder vehicleString = new StringBuilder();
-                foreach (var vehicle in Garage<Vehicle>.theGarage)
-                {
-                    vehicleString.Append($"RegNummer:{vehicle.RegNumber};");
-                    vehicleString.Append($"Antal Hjul:{vehicle.NumberOfWheels};");
-                    vehicleString.Append($"Färg:{vehicle.Color};");
+                vehicleString.Append($"RegNummer:{vehicle.RegNumber};");
+                vehicleString.Append($"Antal Hjul:{vehicle.NumberOfWheels};");
+                vehicleString.Append($"Färg:{vehicle.Color};");
 
-                    vehicleString.Append(Environment.NewLine);
-                }
-                File.WriteAllText(path, vehicleString.ToString());
+                vehicleString.Append(Environment.NewLine);
             }
+            File.WriteAllText(path, vehicleString.ToString());
         }
+       
     }    
 }

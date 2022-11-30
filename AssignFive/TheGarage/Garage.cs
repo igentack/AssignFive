@@ -16,6 +16,7 @@ namespace AssignFive.TheGarage
         }
 
         public static Garage<Vehicle> theGarage = new Garage<Vehicle>(8);
+  
 
         public static Garage<Vehicle> OwnArr(int index)
         {
@@ -28,16 +29,6 @@ namespace AssignFive.TheGarage
             get { return theGarage; }
 
         }
-        //public T this[int index] => vehicles[index];
-
-   /*     public static Garage<Vehicle> GetInstance()
-        {
-            if (Garage<Vehicle>.vehicles == null)
-            {
-                Garage<Vehicle> laraSoft = new Garage<Vehicle>(12);
-                return laraSoft;
-            }
-        }*/
 
         public bool Park(T newVehicle)
         {
@@ -66,18 +57,6 @@ namespace AssignFive.TheGarage
             return false;
         }
 
-     /*   private static void InitArray(int arrayLenght)
-        {
-      
-            if (arrayLenght == 0)
-            {
-                BulkGarage.TestGarage();         
-            }
-            else
-            {
-                Garage<Vehicle> leGarage = new Garage<Vehicle>(arrayLenght);             
-            }
-        }*/
 
         public IEnumerator<T> GetEnumerator()
         {

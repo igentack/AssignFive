@@ -61,7 +61,7 @@ namespace GarageTest
             garageParkTestArray.Park(mCycle);
 
             // Act
-            garageParkTestArray.Unpark(mCycle.Color);
+            garageParkTestArray.Unpark(mCycle.RegNumber);
 
             // Assert
             Assert.False(garageParkTestArray.Any());

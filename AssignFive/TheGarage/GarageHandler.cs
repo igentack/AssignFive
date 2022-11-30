@@ -13,6 +13,9 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using System.ComponentModel;
+using System.Collections;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AssignFive.TheGarage
 {
@@ -53,7 +56,7 @@ namespace AssignFive.TheGarage
 
         public static void AddVehicle(char input)
         {
-            string regnr, color, numberInput, engines;
+            string   engines;
 
             if (input == '1')
             {
@@ -203,6 +206,34 @@ namespace AssignFive.TheGarage
             UI.GreenText($"\n *** Ett Garage med {numberOfIndexes} platser skapades! ***\n");   
             return theGarage;
         }
+        public static void SearchVehicleArray()
+        {
+            char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
+            Console.Write("\nSkriv komma eller punkt emellan era sökkriterier: ");
+            string searchString =Console.ReadLine()!;
+            searchString = CheckString(searchString);
+            string[] searchResult = searchString.Split((delimiterChars));
+            string test = "Violet";
+
+            var vehicles = Garage<Vehicle>.theGarage;
+          
+        }
+        /*public static List<dynamic> Search(Garage<Vehicle>vehicles, string test)
+        {
+            List<dynamic> list = new List<dynamic>();
+
+            for (int i = 0; i < vehicles.Count; i++)
+            {
+                if (vehicles[i] != null && vehicles[i].Equals(test))
+                {
+                    list.Add(vehicles[i]);
+                    Console.WriteLine(list);
+                    return list;
+                }
+            }
+            return list;
+        }
+*/
        
     }
 }

@@ -4,7 +4,7 @@ namespace AssignFive.TheVehicles
 {
     public class Motorcycle : Vehicle, IMotorcycle
     {
-        private List<dynamic> initVehicleList;
+        //private List<dynamic> initVehicleList;
 
         public int CylVolume { get; set; }
         

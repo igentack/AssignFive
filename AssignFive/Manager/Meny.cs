@@ -21,7 +21,7 @@ namespace AssignFive.Manager
            + "4: Populera Garaget (6 st)\n"
            + "5: Initiera valfri Garagestorlek\n"
            + "6: Hämta eller spara ned Garage\n"
-           + "7: Sök fordon\n" 
+           + "7: Sök Fordon\n" 
            + "0: Avsluta\n";
             
             while (true)
@@ -61,7 +61,7 @@ namespace AssignFive.Manager
                         MenyHandler.WriteReadGarage();
                         continue;
                     case '7':
-                        //IterativeFibonacci(10);
+                        MenyHandler.Search();
                         continue;
                     case '0':
                         Console.WriteLine($"\nFin dag nu - Välkommen åter!");

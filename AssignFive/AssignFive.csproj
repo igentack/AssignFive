@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Remove="Manager\MenyHelper.cs" />
+    <Compile Remove="TheGarage\vehicles.cs" />
   </ItemGroup>
 
 </Project>
